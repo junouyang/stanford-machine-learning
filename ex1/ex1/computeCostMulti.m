@@ -13,9 +13,7 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-keyboard;
-X1 = [ones(m, 1) X]
-J = 1 / (2*m) * sum((X1 * theta - y) .^ 2)
+J = 1 / (2*m) * sum((X * theta - y) .^ 2)
 
 
 
