@@ -35,7 +35,16 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+thetaV = theta(:);
+row = size(X, 2);
+col = ceil(size(thetaV)/row);
 
+theta1 = reshape(thetaV, row, col);
+grad = reshape(grad(:), row, col);
+regCoeff = [0;lambda/m * ones(size(theta1) - 1, 1)];
+h = sigmoid(X * theta1);
+J = sum(-y .* log(h) - (1-y) .* log(1-h))/ m + regCoeff' * (theta1 .^ 2) /2;
+grad = ((h - y)' * X / m)' +  regCoeff .* theta1;
 
 
 

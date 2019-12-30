@@ -54,7 +54,6 @@ else
     length = 100;
 end
 
-
 RHO = 0.01;                            % a bunch of constants for line searches
 SIG = 0.5;       % RHO and SIG are the constants in the Wolfe-Powell conditions
 INT = 0.1;    % don't reevaluate within 0.1 of the limit of the current bracket
@@ -121,6 +120,7 @@ while i < abs(length)                                      % while not finished
     end
     A = 6*(f2-f3)/z3+3*(d2+d3);                      % make cubic extrapolation
     B = 3*(f3-f2)-z3*(d3+2*d2);
+    keyboard
     z2 = -d2*z3*z3/(B+sqrt(B*B-A*d2*z3*z3));        % num. error possible - ok!
     if ~isreal(z2) || isnan(z2) || isinf(z2) || z2 < 0 % num prob or wrong sign?
       if limit < -0.5                               % if we have no upper limit
